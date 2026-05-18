@@ -1,9 +1,11 @@
+version: "3"
+
 services:
   appserver:
     container_name: server2
-    build: .
+    image: yonicobin/backend:v1.0.1
     ports:
-      - "8080:8080"
+      - 8080:8080
     depends_on:
       - mysql
 
@@ -15,6 +17,7 @@ services:
       MYSQL_USER: students
       MYSQL_PASSWORD: Unix11
     ports:
-      - "3306:3306"
+      - 3306:3306
     volumes:
       - ./mysql-data:/var/lib/mysql
+    privileged: true
