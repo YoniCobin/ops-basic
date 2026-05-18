@@ -8,7 +8,6 @@ services:
       - 8080:8080
     depends_on:
       - mysql
-
   mysql:
     image: mysql:8.0
     environment:
@@ -21,3 +20,9 @@ services:
     volumes:
       - ./mysql-data:/var/lib/mysql
     privileged: true
+  frontend:
+    image: yonicobin/frontend:latest
+    ports:
+      - "4200:80"
+    depends_on:
+      - appserver 
